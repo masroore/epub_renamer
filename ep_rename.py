@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+Stand-alone epub renamer module
+"""
+
 import os
 import os.path
 import re
@@ -175,7 +180,7 @@ def process_file(fname: str, dirpath: str):
 
 
 if __name__ == "__main__":
-    for dirpath, dnames, fnames in os.walk("./"):
+    for dirpath, _, fnames in os.walk("./"):
         for f in [f for f in fnames if f.lower().endswith(".epub")]:
             try:
                 process_file(f, dirpath)
