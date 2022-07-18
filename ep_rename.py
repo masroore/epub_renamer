@@ -101,13 +101,10 @@ def _find_author_from_dom(xmldoc):
 def _discover_authors(opf_xmldoc, authors_html=None):
     authors = __discover_dc(opf_xmldoc, "creator", first_only=False)
 
-    # We've found large portion of books from specific publishers that store
-    # the authors in pr02.html in a very specific place.
     if not authors and authors_html is not None:
         authors = _find_author_from_dom(authors_html)
 
-    # Slow and inefficient way to remove duplicates but maintain ordering just
-    # in case the author order in epub is significant.
+    # maintain author order
     unique_authors = []
     for author in authors:
         if author not in unique_authors:
